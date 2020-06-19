@@ -1,0 +1,135 @@
+@import "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap";
+
+:root {
+    --purple-color: rgb(113, 89, 193);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+    color: rgb(75,75,75);
+}
+
+header {
+    background: var(--purple-color);
+    padding: 30px;
+}
+
+header .links {
+    text-align: center;
+}
+
+header .links a,
+.bottom a {
+    color: rgb(255, 255, 255);
+    opacity: 0.8;
+    margin: 2px 15px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 26px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+header .links a:hover,
+.bottom a:hover {
+    opacity: 1;
+    margin: 0 15px;
+    padding-bottom: 2px;
+    border-bottom: 2px solid;
+    transition: all 150ms linear 0s;
+}
+
+section {
+    margin: 0 auto;
+    padding: 60px 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.description img {
+    border-radius: 50%;
+    
+    border: 10px solid var(--purple-color);
+    width: 300px;
+    height: 300px;
+}
+
+.description img:hover {
+    border: 5px solid var(--purple-color);
+    padding: 5px;
+}
+
+.description div {
+    text-align: center;
+    width: calc(60% - 10px);
+    display: flex;
+    flex-direction: column;
+}
+
+.description div h1 {
+    color: var(--purple-color);
+    font-size: 45px;
+    line-height: 55px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    border-bottom: 3px solid var(--purple-color);
+    margin: 0 auto 50px;
+}
+
+.description div h2 {
+    font-size: 24px;
+    line-height: 34px;
+    font-weight: normal;
+    margin-bottom: 30px;
+}
+
+.description div h3 {
+    color: rgb(154, 142, 191);
+    font-weight: lighter;
+}
+
+.tecnologies {
+    background-color: var(--purple-color);
+}
+
+.tecnologies div {
+    text-align: center;
+    color: white;
+}
+
+.tecnologies div h1 {
+    font-size: 24px;
+    line-height: 34px;
+    font-weight: bold;
+}
+
+.tecnologies div ul {
+    margin: 30px 0;
+}
+
+.tecnologies div ul li {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: lighter;
+    margin-top: 10px;
+    list-style: none;
+}
+
+.tecnologies div ul li:hover {
+    opacity: 0.6;
+    transition: opacity 150ms;
+}
+
+.bottom a {
+    color: var(--purple-color);
+}
