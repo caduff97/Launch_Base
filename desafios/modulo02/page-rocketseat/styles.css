@@ -17,6 +17,8 @@ body {
     color: rgb(75, 75, 75);
 }
 
+/* === HEADER === */
+
 header {
     background: var(--purple-color);
     padding: 30px;
@@ -45,6 +47,8 @@ header .links a:hover, .bottom a:hover {
     transition: all 150ms linear 0s;
 }
 
+/* === SECTION === */
+
 section {
     margin: 0 auto;
     padding: 60px 30px;
@@ -52,6 +56,8 @@ section {
     justify-content: space-around;
     align-items: center;
 }
+
+/* === HOME PAGE === */
 
 .description img {
     border-radius: 50%;
@@ -121,7 +127,7 @@ section {
     font-weight: lighter;
     margin-top: 10px;
     list-style: none;
-    cursor: pointer;
+    cursor: default;
 }
 
 .tecnologies div ul li:hover {
@@ -131,4 +137,113 @@ section {
 
 .bottom a {
     color: var(--purple-color);
+}
+
+/* === CONTENTS PAGE === */
+
+.contents {
+    background: url(https://skylab.rocketseat.com.br/static/media/MountainsOpacity.a4edba24.png) 0% 0% / cover fixed, rgb(11, 10, 13);
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;  
+    gap: 20px;
+}
+
+.card{
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    width: 300px;
+    height: 450px;
+    text-align: center;
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card:hover {
+    border: 2px solid white;
+    padding: 0;
+}
+
+.card__image-container{
+    padding: 10vh 0;
+}
+
+.card__info {
+    padding: 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+}
+
+.card__info p {
+    color: rgba(255, 255, 255, 0.5);
+    padding: 5px 0px;
+}
+
+.card__price {
+    background-color: rgba(255, 255, 255, 0.1);
+    filter: brightness(90%);
+    border-radius: 20px;
+}
+
+/* === MODAL === */
+
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    visibility: hidden;
+}
+
+.modal {
+    background-color: white;
+    width: 90%;
+    height: 90%;
+    margin: 5vh auto;
+    position: relative;
+    border: 3px solid black;
+    border-radius: 5px;    
+}
+
+.buttons{
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 2px 0px;
+}
+
+.buttons .close,
+.buttons .fullscreen,
+.buttons .fullscreen_exit {
+    cursor: pointer;
+    margin: 0 8px;
+    font-size: 24px;
+}
+
+/* === MODAL ACTIVE === */
+
+.modal-overlay.active {
+    visibility: visible;
+}
+
+iframe {
+    background-color: white;
+    width: 100%;
+    height: 95%;
+    bottom: 0;
+    position: absolute;   
+}
+
+/* === MODAL FULLSCREEN === */
+
+.modal-overlay.fullscreen .modal{
+    width: 100%;
+    height: 100%;
+    margin: 0 0;
 }
