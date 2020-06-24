@@ -1,0 +1,45 @@
+**Instalar server**
+
+npm init -y
+
+remove a linha description, test, keywords, author, license do json
+
+npm install express
+
+coloca no server.js =
+
+	// requisita o express
+	const express = require('express')
+	// requisita o nunjucks para rodar no servidor
+	const nunjucks = require('nunjucks')
+
+	// roda o servidor com o express
+	const server = express()
+
+	// observar a pasta public para servir os arquivos estáticos
+	server.use(express.static('public'))
+
+	// define a estrutura de visualização (motor de view) como html
+	server.set("view engine", "html")
+
+	// define o views como a pasta que servirá as visualizações
+	nunjucks.configure("views", {
+	    express: server
+	})
+
+	// retorna a renderização do index
+	server.get("/", (req, res) => {
+	    return res.render("index")
+	})
+
+	// ouve a porta 5000
+	server.listen(5000, function (){
+	    console.log('server is running')
+	})
+
+
+npm install -D nodemon
+
+npm install nunjucks
+
+Iniciar server: npm start
