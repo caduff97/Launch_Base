@@ -2,8 +2,8 @@ const express = require("express")
 const nunjucks = require("nunjucks")
 
 const server = express()
-const courses = require("./courses")
-const about = require("./about")
+const courses = require("./data/courses")
+const about = require("./data/about")
 
 server.use(express.static("public"))
 

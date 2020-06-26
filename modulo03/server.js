@@ -5,6 +5,7 @@ const nunjucks = require('nunjucks')
 
 // roda o servidor com o express
 const server = express()
+const projects = require("./data");
 
 // observar a pasta public para servir os arquivos estáticos
 server.use(express.static('public'))
@@ -14,17 +15,29 @@ server.set("view engine", "njk")
 
 // define o views como a pasta que servirá as visualizações
 nunjucks.configure("views", {
-    express: server
+    express: server,
+    autoescape: false // permite que o nunjucks faça impressão de html
 })
 
 // retorna a renderização do index para o caminho '/'
 server.get("/", (req, res) => {
-    return res.render("about")
+    const about = {
+        avatar_url: "https://avatars0.githubusercontent.com/u/66188563?s=460&u=40888ad9cad893fc422d56067dfeca054b6d64b3&v=4",
+        name: "Carlos Eduardo",
+        role: "Web Developer Jr.",
+        description: "Programador front-end, focado em aprender sobre CSS e JavaScript. Aluno da <a href='https://rocketseat.com.br' target='_blank'>Rocketseat</a>",
+        links: [
+            { name: "Github", url: "https://github.com/caduff97"},
+            { name: "Linkedin", url: "https://www.linkedin.com/in/cefilho/ "}
+        ]
+    }
+    
+    return res.render("about", { about })
 })
 
 // retorna a renderização da página portfolio para o caminho '/portfolio'
 server.get("/portfolio", (req, res) => {
-    return res.render("portfolio")
+    return res.render("portfolio", { items: projects })
 })
 
 // ouve a porta 5000
