@@ -1,26 +1,30 @@
-const express = require('express')
-const nunjucks = require('nunjucks')
+const express = require("express")
+const nunjucks = require("nunjucks")
 
 const server = express()
+const courses = require("./courses")
+const about = require("./about")
 
-server.use(express.static('public'))
+server.use(express.static("public"))
 
-server.set('view engine', 'njk')
+server.set("view engine", "njk")
 
-nunjucks.configure('views', {
-    express: server
+nunjucks.configure("views", {
+    express: server,
+    autoescape: false
 })
 
 server.get("/", (req, res) => {
-    return res.render('courses')
+    
+    return res.render("courses", { courses })
 })
 
-server.get('/about', (req, res) => {
-    return res.render('about')
+server.get("/about", (req, res) => {
+    return res.render("about", { about })
 })
 
 server.use((req,res) => {
-    res.status(404).render('not-found')
+    res.status(404).render("not-found")
 })
 
 server.listen(3333)

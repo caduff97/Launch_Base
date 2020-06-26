@@ -7,33 +7,30 @@
 {% block content %}
 
     <section id="about" class="description">
-        <img src="https://rocketseat.gallerycdn.vsassets.io/extensions/rocketseat/rocketseatreactnative/3.0.1/1588456740326/Microsoft.VisualStudio.Services.Icons.Default" alt="Rocketseat">
+        <img src="{{ about.img_url }}" alt="Imagem de {{ about.name }}">
 
         <div>
 
-            <h1>Rocketseat</h1>
-            <h2>Um foguete para embarcar nas melhores tecnologias em programação, direto ao ponto e do jeito certo.</h2>
-            <h3>A direção certa que você precisa no meio de tanta informação e da quantidade de ferramentas que surgem diariamente.</h3>
+            <h1>{{ about.name }}</h1>
+            <h2>{{ about.description1 }}</h2>
+            <h3>{{ about.description2 }}</h3>
         </div>
     </section>
     <section class="tecnologies">
         <div>
             <h1>Você dominando as melhores tecnologias</h1>
             <ul>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>NodeJS</li>
-                <li>ReactJS</li>
-                <li>ReactNative</li>
+                {% for tecnologie in about.tecnologies %}
+                    <li>{{ tecnologie.name }}</li>
+                {% endfor %}
             </ul>
         </div>
         <img src="https://rocketseat.com.br/static/images/update/trofeu-home.svg" alt="">
     </section>
     <section class="bottom">
-        <a href="https://github.com/Rocketseat/" target="_blank">Github</a>
-        <a href="https://www.instagram.com/rocketseat_oficial/" target="_blank">Instagram</a>
-        <a href="https://www.facebook.com/rocketseat" target="_blank">Facebook</a>
+        {% for link in about.links %}
+            <a href="{{ link.url }}" target="_blank">{{ link.name }}</a>
+        {% endfor %}
     </section>
 
 {% endblock content %}
