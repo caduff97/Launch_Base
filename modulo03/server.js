@@ -16,7 +16,8 @@ server.set("view engine", "njk")
 // define o views como a pasta que servirá as visualizações
 nunjucks.configure("views", {
     express: server,
-    autoescape: false // permite que o nunjucks faça impressão de html
+    autoescape: false, // permite que o nunjucks faça impressão de html
+    noCache: true // desabilita o Cache
 })
 
 // retorna a renderização do index para o caminho '/'
@@ -38,6 +39,19 @@ server.get("/", (req, res) => {
 // retorna a renderização da página portfolio para o caminho '/portfolio'
 server.get("/portfolio", (req, res) => {
     return res.render("portfolio", { items: projects })
+})
+
+server.get("/project", (req,res) => {
+    const id = req.query.id
+
+    const project = projects.find((project) => {
+        return project.id == id
+    })
+
+    if (!project) {
+        return res.send("Project not found!")
+    }
+    return res.render("project", { item: project })
 })
 
 // ouve a porta 5000
