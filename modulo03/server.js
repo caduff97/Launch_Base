@@ -45,13 +45,7 @@ server.get("/project", (req,res) => {
     const id = req.query.id
 
     const project = projects.find((project) => {
-<<<<<<< HEAD
-        if (project.id == id) {
-            return true
-        }
-=======
         return project.id == id
->>>>>>> 032e35f2bc19b7f2b70d01790bd4cdf11b78ef73
     })
 
     if (!project) {

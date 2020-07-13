@@ -5,14 +5,8 @@ const fullscreenButton = document.querySelector('.buttons .fullscreen')
 
 for (let card of cards) {
     card.addEventListener('click', () => {
-<<<<<<< HEAD
-        modalId = card.getAttribute('id')
-        modalOverlay.querySelector('iframe').src = `https://rocketseat.com.br/${modalId}`
-        modalOverlay.classList.add('active')
-=======
         courseName = card.getAttribute('id')
         window.location.href = `/course/${courseName}`
->>>>>>> 032e35f2bc19b7f2b70d01790bd4cdf11b78ef73
     })
 }
 
