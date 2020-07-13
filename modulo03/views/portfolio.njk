@@ -19,8 +19,11 @@
         {% for item in items %}
 
             <div class="card" id= "{{item.id}}" >
-                <div class="card__image-container">
+                <div class="card__image-container {{ 'featured-wrapper' if item.featured }}">
                     <img src="images/ecoleta.png" alt="">
+                    {% if item.featured %}
+                        <div class="featured">Featured</div>
+                    {% endif %}
                 </div>
 
                 <div class="card__content">
@@ -44,7 +47,7 @@
             </a>
 
             <div class="modal-content">
-                <iframe src="" frameborder="0"></iframe>
+                
             </div>
         </div>
     </div>

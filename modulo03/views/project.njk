@@ -1,0 +1,36 @@
+{% extends "layout.njk" %}
+<!-- importa o layout.html para essa página -->
+
+{% block head %}
+    <title>{{ item.title }} - Cadu Fernandes</title>
+{% endblock %}
+
+{% block content %}
+    <!-- leva esse bloco de conteúdo para a página layout.html -->
+
+    <div id="wrapper">
+        <h1>{{ item.title }}</h1>
+
+    </div>
+
+    <section class="project">
+
+        <div class="card" id="{{item.id}}">
+            <div class="card__project-container">
+                <iframe src="" frameborder="0"></iframe>
+                
+            </div>
+
+            <div class="card__content">
+                <p>{{item.title}}</p>
+            </div>
+
+            <div class="card__info">
+                <p>{{item.description}}</p>
+                <p class="card__date">{{item.date}}</p>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}
