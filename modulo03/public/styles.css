@@ -188,14 +188,36 @@ iframe {
     border-radius: 16px;
 }
 
+<<<<<<< HEAD
 /* === VIDEO PAGE == */
+=======
+/* === PROJECT PAGE == */
+>>>>>>> 032e35f2bc19b7f2b70d01790bd4cdf11b78ef73
 
 .project {
     margin: 0 auto;
     max-width: 800px;
 }
 
+<<<<<<< HEAD
 .card__video-container {
     position: relative;
     height: 500px;
+=======
+.project .card {
+    cursor: initial;
+}
+
+.card__project-container {
+    position: relative;
+    padding-top: 62.5%;
+
+}
+
+.card__project-container iframe{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+>>>>>>> 032e35f2bc19b7f2b70d01790bd4cdf11b78ef73
 }

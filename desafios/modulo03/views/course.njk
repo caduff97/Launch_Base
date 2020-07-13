@@ -1,0 +1,39 @@
+{% extends 'layout.njk' %}
+
+{% block head %}
+   <title>Rocketseat | {{ course.name }}</title>
+
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock head %}
+
+{% block body %}
+   <body class="contents">
+   {% endblock body %}
+
+   {% block content %}
+
+      
+
+      <section class="course">
+
+            <a href="/" id="backCourses"><span class="material-icons">keyboard_backspace</span> voltar</a>
+
+            <div class="card">
+               <div class="card__image-container">
+               <img src="{{ course.img_url }}" alt="Imagem do curso {{course.name}}">
+               </div>
+
+               <div class="description">
+                  <h1>{{ course.description }}</h1>
+                  <a href="https://rocketseat.com.br/{{ course.name }}" target="_blank">Clique aqui para ir para a página do curso</a>
+               </div>
+
+            </div>
+
+         </section>
+
+      {% endblock content %}
+
+      {% block scripts %}
+         <script src="scripts.js"></script>
+      {% endblock scripts %}
