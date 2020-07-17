@@ -1,0 +1,22 @@
+{
+  "instructors": [
+    {
+      "id": 1,
+      "avatar_url": "http://google.com",
+      "name": "Carlos Eduardo Fernandes Filho",
+      "birth": 882489600000,
+      "gender": "M",
+      "services": "musculação, crossfit",
+      "created_at": 1594925448924
+    },
+    {
+      "id": 2,
+      "avatar_url": "http://youtube.com",
+      "name": "Júlia Sales Bavelloni",
+      "birth": 856310400000,
+      "gender": "F",
+      "services": "crossfit",
+      "created_at": 1594925478466
+    }
+  ]
+}

@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "start": "npm-run-all -p nodemon browsersync",
-    "nodemon": "nodemon server.js",
+    "nodemon": "nodemon server.js --ignore data.json",
     "browsersync": "browser-sync start --proxy http://localhost:5000 --files 'public,views'"
   },
   "devDependencies": {

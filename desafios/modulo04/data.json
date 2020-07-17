@@ -1,0 +1,24 @@
+{
+  "teachers": [
+    {
+      "id": 1,
+      "avatar_url": "http://google.com",
+      "name": "Carlos Eduardo Fernandes Filho",
+      "birth": 882489600000,
+      "schooling": "Médio",
+      "class_type": "P",
+      "occupation": "Corretagem",
+      "created_at": 1594945879114
+    },
+    {
+      "id": 2,
+      "avatar_url": "http://youtube.com",
+      "name": "Júlia Sales Bavelloni",
+      "birth": 856310400000,
+      "schooling": "Médio",
+      "class_type": "P",
+      "occupation": "Veterinária",
+      "created_at": 1594948937918
+    }
+  ]
+}
