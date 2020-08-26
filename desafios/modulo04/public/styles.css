@@ -93,10 +93,6 @@ header a:hover::after {
     }
 }
 
-.avatar {
-    background: url(https://source.unsplash.com/collection/8874679/800x800) no-repeat center center / cover;
-}
-
 /* === DETAILS === */
 
 .details {
@@ -176,7 +172,8 @@ select {
     background-color: var(--white-color);
 }
 
-button {
+button[type="submit"],
+a.button {
     width: 100%;
     font-size: 16px;
     margin-top: 32px;
@@ -185,4 +182,38 @@ button {
     background-color: var(--primary-color);
     color: var(--white-color);
     cursor: pointer;
+}
+
+a.button {
+    padding: 12px 32px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* === ERROR === */
+
+.error {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 54px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.error h1 {
+    text-align: center;
+    color: var(--green-color);
+    font-size: 32px;
+    line-height: 36px;
+    margin-bottom: 12px;
+}
+
+.error h2 {
+    text-align: center;
+    color: var(--default-description-text-color);
+    font-size: 24px;
+    line-height: 28px;
 }
