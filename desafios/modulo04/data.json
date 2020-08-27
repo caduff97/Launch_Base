@@ -1,23 +1,23 @@
 {
   "teachers": [
     {
-      "id": 1,
+      "id": "1",
       "avatar_url": "https://source.unsplash.com/collection/517198/500x500",
       "name": "Carlos Eduardo Fernandes Filho",
       "birth": 882489600000,
-      "graduation": "Doutorado",
+      "graduation": "Medio",
       "class_type": "D",
-      "occupations": "contabilidade, auditoria",
+      "occupations": "HTML, JavaScript, NodeJs, CSS",
       "created_at": 1598381720263
     },
     {
-      "id": 2,
+      "id": "2",
       "avatar_url": "https://source.unsplash.com/collection/517198/500x500",
       "name": "Júlia Sales Bavelloni",
-      "birth": 967248000000,
+      "birth": 856310400000,
       "graduation": "Superior",
-      "class_type": "P",
-      "occupations": "veterinária",
+      "class_type": "D",
+      "occupations": "veterinária, corretora de imóveis",
       "created_at": 1598381756699
     }
   ]

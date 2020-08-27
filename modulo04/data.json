@@ -3,20 +3,20 @@
     {
       "id": 1,
       "avatar_url": "https://source.unsplash.com/collection/3465564/500x500",
+      "name": "Júlia Sales Bavelloni",
+      "birth": 856310400000,
+      "gender": "F",
+      "services": "musculação, crossfit, corrida",
+      "created_at": 1598471173840
+    },
+    {
+      "id": 2,
+      "avatar_url": "https://source.unsplash.com/collection/3465564/500x500",
       "name": "Carlos Eduardo Fernandes Filho",
       "birth": 882489600000,
       "gender": "M",
       "services": "musculação, crossfit",
-      "created_at": 1594925448924
-    },
-    {
-      "id": 2,
-      "avatar_url": "http://youtube.com",
-      "name": "Júlia Sales Bavelloni",
-      "birth": 856310400000,
-      "gender": "F",
-      "services": "crossfit",
-      "created_at": 1594925478466
+      "created_at": 1598471197542
     }
   ]
 }

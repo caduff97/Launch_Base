@@ -172,11 +172,27 @@ select {
     background-color: var(--white-color);
 }
 
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 8px;
+    pointer-events: none;
+}
+
+.buttons button[type="submit"]{
+    width: 95%;
+    pointer-events: initial;
+}
+
+.buttons button + button {
+    background-color: crimson;
+}
+
 button[type="submit"],
 a.button {
+    margin: 0 auto;
     width: 100%;
     font-size: 16px;
-    margin-top: 32px;
     padding: 8px 32px;
     border-radius: 4px;
     background-color: var(--primary-color);
@@ -185,11 +201,12 @@ a.button {
 }
 
 a.button {
-    padding: 12px 32px;
     display: block;
     text-align: center;
     text-decoration: none;
 }
+
+
 
 /* === ERROR === */
 
