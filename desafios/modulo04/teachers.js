@@ -2,7 +2,21 @@ const fs = require('fs')
 const data = require('./data.json')
 const { age, graduation, class_type, date } = require('./utils')
 
-// create
+exports.index = (req, res) => {
+    const teachers = []
+
+    for (teacher of data.teachers) {
+        const formattedTeacher = {
+            ...teacher,
+            occupations: teacher.occupations.split(',')
+        }
+
+        teachers.push(formattedTeacher)
+    }
+
+    return res.render('teachers/index', { teachers })
+}
+
 exports.form = (req,res) => {
     
     keys = Object.keys(req.body)
@@ -91,7 +105,8 @@ exports.update = (req, res) => {
     const teacher = {
         ...foundTeacher,
         ...req.body,
-        birth: Date.parse(req.body.birth)
+        birth: Date.parse(req.body.birth),
+        id: Number(req.body.id)
     }
 
     data.teachers[index] = teacher

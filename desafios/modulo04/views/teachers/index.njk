@@ -2,43 +2,38 @@
 
 {% block content %}
 
-    <div class="card">
-        <section class="avatar"></section>
+    <div class="card table-container">
         
-        <section class="details">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Nome Completo</th>
+                    <th>Acompanhamento</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
             
-            <h3>Detalhes</h3>
+            <tbody>
+                    {% for teacher in teachers %}
 
-            <div class="item">
-                <div>Nome completo</div>
-                <div>Carlos Eduardo Fernandes Filho</div>
-            </div>
+                        <tr>
+                            <td>
+                                <span style="background: url({{ teacher.avatar_url }}) no-repeat center center / cover"></span>
+                                {{ teacher.name }}
+                            <td>
+                                {% for occupation in teacher.occupations %}
+                                    <span>{{ occupation }}</span>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <a href="/teachers/{{ teacher.id }}">ver</a>
+                            </td>
+                        </tr>
 
-            <div class="item">
-                <div>Idade</div>
-                <div>22 anos</div>
-            </div>
-
-            <div class="item">
-                <div>Grau de escolaridade</div>
-                <div>Ensino Superior Incompleto</div>
-            </div>
-
-            <div class="item">
-                <div>Acompanhamento</div>
-                <div>
-                    <span>Corretagem de imóveis</span>
-                    <span>Programação Web</span>
-                    <span>Contabilidade</span>
-                </div>
-            </div>
-
-            <div class="item">
-                <div>Desde</div>
-                <div>12/02/2020</div>
-            </div>
-
-        </section>
+                    {% endfor %}
+            </tbody>
+    </table>
+        
     </div>
 
 {% endblock content %}
