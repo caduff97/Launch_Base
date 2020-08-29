@@ -1,6 +1,6 @@
 const fs = require('fs')
-const data = require('./data.json')
-const { age, date } = require('./utils')
+const data = require('../data.json')
+const { age, date } = require('../utils')
 
 exports.index = (req, res) => {
     const instructors = []
@@ -17,7 +17,48 @@ exports.index = (req, res) => {
     return res.render('instructors/index', { instructors })
 }
 
-// show
+exports.create = (req, res) => {
+    return res.render('instructors/create')
+}
+
+exports.post = (req,res) => {
+
+    const keys = Object.keys(req.body)
+
+    for (key of keys) {
+        if (req.body[key] == '')
+            return res.send ('Please, fill all fields!')
+    }
+
+    let { avatar_url, birth, name, services, gender } = req.body
+
+    birth = Date.parse(req.body.birth)
+    const created_at = Date.now()
+    
+    let id = 1
+    const lastMember = data.members[data.members.length -1]
+    
+    if (lastMember) {
+        id = lastMember.id + 1
+    }
+
+    data.instructors.push({
+        id,
+        avatar_url,
+        name,
+        birth,
+        gender,
+        services,
+        created_at
+    })
+
+    fs.writeFile('data.json', JSON.stringify(data, null, 2), (err) => {
+        if (err) return res.send('Write file error!')
+
+        return res.redirect(`/instructors/${id}`)
+    })
+}
+
 exports.show = (req,res) => {
     const { id } = req.params
 
@@ -37,40 +78,6 @@ exports.show = (req,res) => {
     return res.render('instructors/show', { instructor })
 }
 
-// create
-exports.post = (req,res) => {
-
-    const keys = Object.keys(req.body)
-
-    for (key of keys) {
-        if (req.body[key] == '')
-            return res.send ('Please, fill all fields!')
-    }
-
-    let { avatar_url, birth, name, services, gender } = req.body
-
-    birth = Date.parse(req.body.birth)
-    const created_at = Date.now()
-    const id = Number(data.instructors.length + 1)
-
-    data.instructors.push({
-        id,
-        avatar_url,
-        name,
-        birth,
-        gender,
-        services,
-        created_at
-    })
-
-    fs.writeFile('data.json', JSON.stringify(data, null, 2), (err) => {
-        if (err) return res.send('Write file error!')
-
-        return res.redirect('/instructors')
-    })
-}
-
-// edit
 exports.edit = (req, res) => {   
 
     const { id } = req.params
@@ -83,13 +90,12 @@ exports.edit = (req, res) => {
 
     const instructor = {
         ...foundInstructor,
-        birth: date(foundInstructor.birth)
+        birth: date(foundInstructor.birth).iso
     }
 
     return res.render('instructors/edit', { instructor })
 }
 
-// put
 exports.put = (req, res) => {
     
     const { id } = req.body
@@ -120,7 +126,6 @@ exports.put = (req, res) => {
     })
 }
 
-// delete
 exports.delete = (req, res) => {
     const { id } = req.body
 

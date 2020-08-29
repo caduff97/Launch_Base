@@ -1,31 +1,46 @@
 {
-  "instructors": [
+  "members": [
     {
       "id": 1,
-      "avatar_url": "https://source.unsplash.com/collection/3465564/500x500",
-      "name": "Júlia Sales Bavelloni",
-      "birth": 856310400000,
-      "gender": "F",
-      "services": "musculação, crossfit, corrida",
-      "created_at": 1598471173840
+      "avatar_url": "https://scontent.fcgh8-1.fna.fbcdn.net/v/t1.0-9/83621323_115002860046946_8822867298575450112_o.jpg?_nc_cat=110&_nc_sid=09cbfe&_nc_eui2=AeFMK84owFMy45k-5t6bsxDljT_2SK0Y8KWNP_ZIrRjwpSOW_Qv_jUYlo7YibIrzW5i8NYTyHbV4jfMVlFIvIAM8&_nc_ohc=ovep6pHgvxYAX8PNjkb&_nc_ht=scontent.fcgh8-1.fna&oh=c253fb8eca130736b314f68e6bb9f934&oe=5F6E070B",
+      "name": "Carlos Eduardo Fernandes Filho",
+      "email": "kadufernandes.kf@gmail.com",
+      "birth": 882489600000,
+      "gender": "M",
+      "blood": "A1",
+      "weight": "65",
+      "height": "174"
     },
     {
       "id": 2,
-      "avatar_url": "https://source.unsplash.com/collection/3465564/500x500",
-      "name": "Carlos Eduardo Fernandes Filho",
-      "birth": 882489600000,
-      "gender": "M",
-      "services": "musculação, crossfit",
-      "created_at": 1598471197542
+      "avatar_url": "https://scontent.fgru5-1.fna.fbcdn.net/v/t1.0-9/23434950_1915427505375360_4191395060362225493_n.jpg?_nc_cat=101&_nc_sid=174925&_nc_eui2=AeHWQn_ziT_QXMT6kCtQBkfy26ZZawRbHS3bpllrBFsdLdV11LrY8Tav1cZU8UONLegESMFdsJdca2bUea6k6JZX&_nc_ohc=1VNlpSwWYpsAX-VKNsK&_nc_ht=scontent.fgru5-1.fna&oh=f2d6a5e16108369f1e78d0ab996cc3c2&oe=5F6F54D0",
+      "name": "Júlia Sales Bavelloni",
+      "email": "julinhasalesbavelloni@gmail.com",
+      "birth": 856310400000,
+      "gender": "F",
+      "blood": "O1",
+      "weight": "50",
+      "height": "165"
+    }
+  ],
+  "instructors": [
+    {
+      "id": 1,
+      "avatar_url": "https://scontent.fgru5-1.fna.fbcdn.net/v/t1.0-9/23434950_1915427505375360_4191395060362225493_n.jpg?_nc_cat=101&_nc_sid=174925&_nc_eui2=AeHWQn_ziT_QXMT6kCtQBkfy26ZZawRbHS3bpllrBFsdLdV11LrY8Tav1cZU8UONLegESMFdsJdca2bUea6k6JZX&_nc_ohc=1VNlpSwWYpsAX-VKNsK&_nc_ht=scontent.fgru5-1.fna&oh=f2d6a5e16108369f1e78d0ab996cc3c2&oe=5F6F54D0",
+      "name": "Júlia Sales Bavelloni",
+      "birth": 856310400000,
+      "gender": "F",
+      "services": "crossfit, corrida",
+      "created_at": 1598471173840
     },
     {
       "id": 3,
-      "avatar_url": "https://source.unsplash.com/collection/3465564/500x500",
-      "name": "Teste",
-      "birth": 622944000000,
-      "gender": "F",
-      "services": "musculação, crossfit",
-      "created_at": 1598558234752
+      "avatar_url": "https://scontent.fcgh8-1.fna.fbcdn.net/v/t1.0-9/83621323_115002860046946_8822867298575450112_o.jpg?_nc_cat=110&_nc_sid=09cbfe&_nc_eui2=AeFMK84owFMy45k-5t6bsxDljT_2SK0Y8KWNP_ZIrRjwpSOW_Qv_jUYlo7YibIrzW5i8NYTyHbV4jfMVlFIvIAM8&_nc_ohc=ovep6pHgvxYAX8PNjkb&_nc_ht=scontent.fcgh8-1.fna&oh=c253fb8eca130736b314f68e6bb9f934&oe=5F6E070B",
+      "name": "Carlos Eduardo Fernandes Filho",
+      "birth": 882489600000,
+      "gender": "M",
+      "services": "musculação",
+      "created_at": 1598733796960
     }
   ]
 }
