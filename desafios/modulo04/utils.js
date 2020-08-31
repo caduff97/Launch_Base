@@ -14,38 +14,59 @@ module.exports = {
     },
     graduation: function(level) {
 
-        let gradName = level
+        switch (level) {
 
-        if (level == "Medio") {
-            gradName = "Ensino Médio Completo"
-        } else if (level == "Superior") {
-            gradName = "Ensino Superior Completo"
+            case "Medio": level = "Ensino Médio Completo"; break;
+            case "Superior": level = "Ensino Superior Completo"; break;
+
         }
 
-        return gradName
+        return level
 
     },
     class_type: function(type) {
-        
-        let classType = type
 
-        if (type == "D") {
-            classType = "À Distância"
-        } else if (type == "P") {
-            classType = "Presencial"
+        switch (type) {
+
+            case "D": type = "À Distância"; break;
+            case "P": type = "Presencial"; break;
+        
         }
 
-        return classType
+        return type
 
     },
     date: function(timestamp) {
 
         const date = new Date(timestamp)
 
-        const year = date.getUTCFullYear()
-        const month = `0${date.getUTCMonth() + 1}`.slice(-2)
         const day = `0${date.getUTCDate()}`.slice(-2)
+        const month = `0${date.getUTCMonth() + 1}`.slice(-2)
+        const year = date.getUTCFullYear()
 
-        return `${year}-${month}-${day}`
+        return {
+            day,
+            month,
+            year,
+            iso: `${year}-${month}-${day}`,
+            birthday: `${day}/${month}`
+        }
+    },
+    grade: function(year) {
+
+        switch (year) {
+            
+            case "5F": year = "5° ano - Ensino Fundamental"; break;
+            case "6F": year = "6° ano - Ensino Fundamental"; break;
+            case "7F": year = "7° ano - Ensino Fundamental"; break;
+            case "8F": year = "8° ano - Ensino Fundamental"; break;
+            case "9F": year = "9° ano - Ensino Fundamental"; break;
+            case "1M": year = "1° ano - Ensino Médio"; break;
+            case "2M": year = "2° ano - Ensino Médio"; break;
+            case "3M": year = "3° ano - Ensino Médio"; break;
+        
+        }
+
+        return year
     }
 }

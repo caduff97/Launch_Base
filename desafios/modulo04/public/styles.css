@@ -208,7 +208,7 @@ a.button {
     text-decoration: none;
 }
 
-/* === INDEX TEACHERS === */
+/* === INDEX === */
 
 .table-container {
     display: block;
@@ -233,14 +233,19 @@ th {
 tbody tr td {
     padding: 12px 0;
     border-top: 1px solid #d9d9d9;
+    font-size: 16px;   
 }
 
 tbody tr td:first-child {
     display: flex;
     align-items: center;
     margin: 0 auto;
-    text-align: center;
-    font-size: 16px;
+}
+
+tbody tr td p {
+    display: inline;
+    align-items: center;
+    margin: 0 auto;
     font-weight: 300;
 }
 
@@ -248,17 +253,23 @@ tbody tr td:first-child span {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    margin-right: 12px;
+    margin: 0 12px;
     box-shadow: 3px 1px 6px -4px black;
     border: 2px solid white;
 }
 
-tbody tr td:last-child a {
+tbody tr td:last-child a,
+.table-container a:first-child {
     background-color: var(--primary-color);
     padding: 8px 16px;
     text-decoration: none;
     color: white;
     border-radius: 4px;
+}
+
+.table-container a:first-child {
+    display: inline-block;
+    margin-bottom: 4px;
 }
 
 

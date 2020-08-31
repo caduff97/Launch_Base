@@ -1,6 +1,6 @@
 const fs = require('fs')
-const data = require('./data.json')
-const { age, graduation, class_type, date } = require('./utils')
+const data = require('../data.json')
+const { age, graduation, class_type, date } = require('../utils')
 
 exports.index = (req, res) => {
     const teachers = []
@@ -17,6 +17,10 @@ exports.index = (req, res) => {
     return res.render('teachers/index', { teachers })
 }
 
+exports.create = (req,res) => {
+    return res.render('teachers/create')
+}
+
 exports.form = (req,res) => {
     
     keys = Object.keys(req.body)
@@ -27,27 +31,29 @@ exports.form = (req,res) => {
             return res.send ('Please, fill all fields!')
     }
 
-    let { avatar_url, name, birth, graduation, class_type, occupations } = req.body
+    let { birth } = req.body
 
     birth = Date.parse(birth)
     const created_at = Date.now()
-    const id = Number(data.teachers.length + 1)
     
+    let id = 1
+    const lastTeacher = data.teachers[data.teachers.length -1]
+    
+    if (lastTeacher) {
+        id = lastTeacher.id + 1
+    }
+
     data.teachers.push({
         id,
-        avatar_url,
-        name,
+        ...req.body,
         birth,
-        graduation,
-        class_type,
-        occupations,
         created_at
     })
 
     fs.writeFile('data.json', JSON.stringify(data, null, 2), (err) => {
         if (err) return res.send('Write file error!')
 
-        return res.redirect('/teachers')
+        return res.redirect(`/teachers/${id}`)
     })
 }
 
@@ -83,7 +89,7 @@ exports.edit = (req, res) => {
 
     const teacher = {
         ...foundTeacher,
-        birth: date(foundTeacher.birth)
+        birth: date(foundTeacher.birth).iso
     }
 
     return res.render('teachers/edit', { teacher })

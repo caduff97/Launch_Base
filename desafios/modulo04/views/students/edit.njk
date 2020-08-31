@@ -6,17 +6,17 @@
 
         <section
             class="avatar"
-            style="background: url({{ teacher.avatar_url }}) no-repeat center center / cover"
+            style="background: url({{ student.avatar_url }}) no-repeat center center / cover"
         >
         </section>
 
         <section class="details">
             
-            <h3>Editar Professor</h3>
+            <h3>Editar Estudante</h3>
 
-            <form id="edit" action="/teachers?_method=put" method="post">
+            <form id="edit" action="/students?_method=put" method="post">
 
-            {% include 'teachers/fields.njk' %}  
+            {% include 'students/fields.njk' %}  
 
             <div class="buttons">
                 
@@ -28,20 +28,20 @@
 
             </form>           
 
-            <form id="form-delete" action="/teachers?_method=delete" method="post">
+            <form id="form-delete" action="/students?_method=delete" method="post">
             </form>
 
             <input
                     type="hidden"
                     name="id"
-                    value="{{ teacher.id }}"
+                    value="{{ student.id }}"
                     form="edit"
                 >
 
             <input
                     type="hidden"
                     name="id"
-                    value="{{ teacher.id }}"
+                    value="{{ student.id }}"
                     form="form-delete"
                 >
 
