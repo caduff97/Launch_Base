@@ -12,6 +12,15 @@ module.exports = {
     
         return age
     },
+    blood(blood) {
+        let Rh = blood.slice(-1)
+
+        Rh = (Rh == 0) ? "-" : "+";
+
+        const bloodType = blood.replace("0", "").replace("1", "")
+
+        return (bloodType + Rh)
+    },
     date(timestamp) {
         const date = new Date(timestamp)
 
@@ -24,16 +33,8 @@ module.exports = {
             month,
             year,
             iso: `${year}-${month}-${day}`,
-            birthDay: `${day}/${month}`
+            birthDay: `${day}/${month}`,
+            format: `${day}/${month}/${year}`
         }
-    },
-    blood(blood) {
-        let Rh = blood.slice(-1)
-
-        Rh = (Rh == 0) ? "-" : "+";
-
-        const bloodType = blood.replace("0", "").replace("1", "")
-
-        return (bloodType + Rh)
     }
 }

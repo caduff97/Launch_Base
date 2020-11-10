@@ -1,8 +1,20 @@
-const { age, date } = require('../../lib/utils')
+
+const { age, blood, date } = require('../../lib/utils')
+
+const Member = require('../models/Member')
 
 module.exports = {
-    index(req, res){              
-        return res.render('members/index')
+    index(req, res) {
+
+        Member.all((members) => {
+
+            for (member of members) {
+                member.services = member.services.split(',')
+            }
+            
+            return res.render('members/index', { members })
+        })
+
     },
     create(req, res){
         return res.render('members/create')
@@ -15,13 +27,29 @@ module.exports = {
                 return res.send ('Please, fill all fields!')
         }
     
-        return
+        Member.create((req.body), (Member) => {
+            return res.redirect(`members/${Member.id}`)
+        })
+    
     },
     show(req, res){
-        return
+        Member.find(req.params.id, (member) => {
+            if(!member) return res.send('Member not found!')
+
+            member.birth = date(member.birth).birthDay
+            member.blood = blood(member.blood)
+            
+            return res.render('members/show', { member })
+        })
     },
     edit(req, res){
-        return
+        Member.find(req.params.id, (member) => {
+            if(!member) return res.send('Member not found!')
+
+            member.birth = date(member.birth).iso
+
+            return res.render('members/edit', { member })
+        })
     },
     put(req, res){
         const keys = Object.keys(req.body)
@@ -30,12 +58,18 @@ module.exports = {
             if (req.body[key] == '')
                 return res.send ('Please, fill all fields!')
         }
-    
-        let { avatar_url, birth, name, services, gender } = req.body
+
+        Member.update(req.body, () => {
+            return res.redirect(`/members/${req.body.id}`)
+        })
     
         return
     },
     delete(req, res){
-        return
+        
+        Member.delete(req.body.id, () => {
+            return res.redirect('/members')
+        })
+
     }
 }

@@ -1,8 +1,20 @@
+
 const { age, date } = require('../../lib/utils')
 
+const Instructor = require('../models/Instructor')
+
 module.exports = {
-    index(req, res){
-        return res.render('instructors/index')
+    index(req, res) {
+
+        Instructor.all((instructors) => {
+
+            for (instructor of instructors) {
+                instructor.services = instructor.services.split(',')
+            }
+            
+            return res.render('instructors/index', { instructors })
+        })
+
     },
     create(req, res){
         return res.render('instructors/create')
@@ -15,15 +27,30 @@ module.exports = {
                 return res.send ('Please, fill all fields!')
         }
     
-        let { avatar_url, birth, name, services, gender } = req.body
+        Instructor.create((req.body), (Instructor) => {
+            return res.redirect(`instructors/${Instructor.id}`)
+        })
     
-        return
     },
     show(req, res){
-        return
+        Instructor.find(req.params.id, (instructor) => {
+            if(!instructor) return res.send('Instructor not found!')
+
+            instructor.age = age(instructor.birth)
+            instructor.services = instructor.services.split(',')
+            instructor.created_at = date(instructor.created_at).format
+
+            return res.render('instructors/show', { instructor })
+        })
     },
     edit(req, res){
-        return
+        Instructor.find(req.params.id, (instructor) => {
+            if(!instructor) return res.send('Instructor not found!')
+
+            instructor.birth = date(instructor.birth).iso
+
+            return res.render('instructors/edit', { instructor })
+        })
     },
     put(req, res){
         const keys = Object.keys(req.body)
@@ -32,12 +59,18 @@ module.exports = {
             if (req.body[key] == '')
                 return res.send ('Please, fill all fields!')
         }
-    
-        let { avatar_url, birth, name, services, gender } = req.body
+
+        Instructor.update(req.body, () => {
+            return res.redirect(`/instructors/${req.body.id}`)
+        })
     
         return
     },
     delete(req, res){
-        return
+        
+        Instructor.delete(req.body.id, () => {
+            return res.redirect('/instructors')
+        })
+
     }
 }
