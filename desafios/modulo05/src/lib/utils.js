@@ -40,16 +40,17 @@ module.exports = {
 
         const date = new Date(timestamp)
 
-        const day = `0${date.getUTCDate()}`.slice(-2)
-        const month = `0${date.getUTCMonth() + 1}`.slice(-2)
-        const year = date.getUTCFullYear()
-
+        const day = `0${date.getDate()}`.slice(-2)
+        const month = `0${date.getMonth() + 1}`.slice(-2)
+        const year = date.getFullYear()
+        
         return {
             day,
             month,
             year,
             iso: `${year}-${month}-${day}`,
-            birthday: `${day}/${month}`
+            birthDay: `${day}/${month}`,
+            date: `${day}/${month}/${year}`
         }
     },
     grade(year) {
