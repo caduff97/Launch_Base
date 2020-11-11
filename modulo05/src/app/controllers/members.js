@@ -8,9 +8,7 @@ module.exports = {
 
         Member.all((members) => {
 
-            for (member of members) {
-                member.services = member.services.split(',')
-            }
+            
             
             return res.render('members/index', { members })
         })
@@ -63,7 +61,6 @@ module.exports = {
             return res.redirect(`/members/${req.body.id}`)
         })
     
-        return
     },
     delete(req, res){
         

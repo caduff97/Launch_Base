@@ -63,8 +63,6 @@ module.exports = {
         Instructor.update(req.body, () => {
             return res.redirect(`/instructors/${req.body.id}`)
         })
-    
-        return
     },
     delete(req, res){
         
