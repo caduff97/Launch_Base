@@ -5,14 +5,29 @@ const { age, class_type, date, grade, graduation } = require('../../lib/utils')
 module.exports = {
     index(req, res) {
         
-        Teacher.all((teachers) => {
+        const { filter } = req.query
 
-            for (teacher of teachers) {
-                teacher.occupations = teacher.occupations.split(',')
-            }
+        if ( filter ) {
+            Teacher.findBy((filter), (teachers) => {
+                
+                for (teacher of teachers) {
+                    teacher.occupations = teacher.occupations.split(',')
+                }
 
-            return res.render('teachers/index', { teachers })
-        })
+                return res.render('teachers/index', { teachers, filter })
+
+            })
+        } else {
+            Teacher.all((teachers) => {
+
+                for (teacher of teachers) {
+                    teacher.occupations = teacher.occupations.split(',')
+                }
+    
+                return res.render('teachers/index', { teachers })
+            })
+        }
+        
         
     },
     create(req, res) {

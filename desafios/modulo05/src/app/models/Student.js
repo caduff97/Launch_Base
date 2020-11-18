@@ -5,9 +5,10 @@ module.exports = {
     all(callback) {
 
         db.query(`
-        SELECT *
+        SELECT students.*, teachers.name AS teacher_name
         FROM students
-        ORDER BY name ASC`, (err, results) => {
+        LEFT JOIN teachers ON (students.teacher_id = teachers.id)
+        ORDER BY students.name ASC`, (err, results) => {
             if(err) throw `Database error! ${err}`
             callback(results.rows)
         })
@@ -22,9 +23,10 @@ module.exports = {
             email,
             birth,
             schoolyear,
-            workload
+            workload,
+            teacher_id
         )
-        VALUES ($1, $2, $3, $4, $5, $6)
+        VALUES ($1, $2, $3, $4, $5, $6, $7)
         RETURNING id
         `
 
@@ -34,7 +36,8 @@ module.exports = {
             data.email,
             date(data.birth).iso,
             data.schoolyear,
-            data.workload
+            data.workload,
+            data.teacher
         ]
 
         db.query(query, values, (err, results) => {
@@ -46,9 +49,10 @@ module.exports = {
     find(id, callback) {
 
         db.query(`
-        SELECT *
+        SELECT students.*, teachers.name AS teacher_name 
         FROM students
-        WHERE id = $1`, [id], (err, results) => {
+        LEFT JOIN teachers ON (students.teacher_id = teachers.id)
+        WHERE students.id = $1`, [id], (err, results) => {
             if(err) throw `Database error! ${err}`
             callback(results.rows[0])
         })
@@ -63,8 +67,9 @@ module.exports = {
             email = $3,
             birth = $4,
             schoolyear = $5,
-            workload = $6
-        WHERE id = $7
+            workload = $6,
+            teacher_id = $7
+        WHERE id = $8
         `
 
         values = [
@@ -74,6 +79,7 @@ module.exports = {
             date(data.birth).iso,
             data.schoolyear,
             data.workload,
+            data.teacher,
             data.id
         ]
 
@@ -92,5 +98,15 @@ module.exports = {
             callback()
         })
 
+    },
+    teachersSelectOptions(callback) {
+
+        db.query(`
+        SELECT name, id
+        FROM teachers
+        ORDER BY name ASC`, (err, results) => {
+            if(err) throw `Database error! ${err}`
+            callback(results.rows)
+        })
     }
 }

@@ -56,6 +56,19 @@ module.exports = {
         })
 
     },
+    findBy(filter, callback) {
+
+        db.query(`
+        SELECT *
+        FROM teachers
+        WHERE name ILIKE '%${filter}%'
+        OR occupations ILIKE '%${filter}%'
+        ORDER BY name ASC`, (err, results) => {
+            if(err) throw `Database error! ${err}`
+            callback(results.rows)
+        })
+
+    },
     update(data, callback) {
         
         query = `

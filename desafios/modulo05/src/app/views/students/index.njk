@@ -12,6 +12,7 @@
                     <th>Nome Completo</th>
                     <th>Email</th>
                     <th>Ano escolar</th>
+                    <th>Professor</th>
                     <th>Ação</th>
                 </tr>
             </thead>
@@ -28,6 +29,9 @@
                             </td>
                             <td>
                                 <p>{{ student.schoolyear }}</p>
+                            </td>
+                            <td>
+                                <p>{{ student.teacher_name }}</p>
                             </td>
                             <td>
                                 <a href="/students/{{ student.id }}">ver</a>

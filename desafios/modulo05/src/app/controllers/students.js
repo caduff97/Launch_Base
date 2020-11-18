@@ -1,6 +1,7 @@
 const Student = require('../models/Student')
 
 const { date, grade } = require('../../lib/utils')
+const db = require('../../config/db')
 
 module.exports = {
     index(req, res) {
@@ -17,7 +18,9 @@ module.exports = {
     },
     create(req, res) {
 
-        return res.render('students/create')
+        Student.teachersSelectOptions((options) => {
+            return res.render('students/create', { teacherOptions: options })
+        })
 
     },
     post(req, res) {
@@ -53,8 +56,11 @@ module.exports = {
 
             student.birth = date(student.birth).iso
 
-            return res.render('students/edit', { student })
+            Student.teachersSelectOptions((options) => {
+            return res.render('students/edit', { student, teacherOptions: options })
         })
+
+    })
 
     },
     update(req, res) {

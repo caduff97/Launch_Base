@@ -272,6 +272,29 @@ tbody tr td:last-child a,
     margin-bottom: 4px;
 }
 
+/* === FILTER === */
+
+.table-container .header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.table-container .header form {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    gap: 8px;
+}
+
+.table-container .header a.button {
+    width: 120px;
+    margin: 0;
+}
+
+.table-container .header form input {
+    border: 1px solid #eee;
+}
+
 
 /* === ERROR === */
 
@@ -299,3 +322,4 @@ tbody tr td:last-child a,
     font-size: 24px;
     line-height: 28px;
 }
+

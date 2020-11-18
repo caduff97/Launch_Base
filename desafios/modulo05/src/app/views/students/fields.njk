@@ -76,4 +76,15 @@
                     name="workload"
                     value="{{ student.workload }}"
                     >
-                </div>           
+                </div>
+                
+                <div class="item">
+                <div>Aluno de</div>
+                <select name="teacher">
+                    {% for teacher in teacherOptions %}
+                        <option value="{{ teacher.id }}" {% if student.teacher_id == teacher.id %} selected {% endif %}>
+                            {{ teacher.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+                </div>
