@@ -211,7 +211,8 @@ a.button {
 /* === INDEX === */
 
 .table-container {
-    display: block;
+    display: grid;
+    grid-template: 65px 1fr 40px / 1fr;
     padding: 20px;
 }
 
@@ -259,17 +260,12 @@ tbody tr td:first-child span {
 }
 
 tbody tr td:last-child a,
-.table-container a:first-child {
+.table-container header a:first-child {
     background-color: var(--primary-color);
     padding: 8px 16px;
     text-decoration: none;
     color: white;
     border-radius: 4px;
-}
-
-.table-container a:first-child {
-    display: inline-block;
-    margin-bottom: 4px;
 }
 
 /* === FILTER === */
@@ -293,6 +289,23 @@ tbody tr td:last-child a,
 
 .table-container .header form input {
     border: 1px solid #eee;
+}
+
+/* === PAGINATION === */
+
+.pagination {
+    align-self: center;
+    justify-self: center;
+}
+
+.pagination a,
+.pagination span {
+    text-decoration: none;
+    margin: 0 4px;
+}
+
+.pagination a:hover {
+    border-bottom: 1px solid var(--primary-color);
 }
 
 

@@ -5,29 +5,33 @@ const { age, class_type, date, grade, graduation } = require('../../lib/utils')
 module.exports = {
     index(req, res) {
         
-        const { filter } = req.query
-
-        if ( filter ) {
-            Teacher.findBy((filter), (teachers) => {
-                
-                for (teacher of teachers) {
-                    teacher.occupations = teacher.occupations.split(',')
-                }
-
-                return res.render('teachers/index', { teachers, filter })
-
-            })
-        } else {
-            Teacher.all((teachers) => {
-
-                for (teacher of teachers) {
-                    teacher.occupations = teacher.occupations.split(',')
-                }
+        let { filter, page, limit } = req.query
     
-                return res.render('teachers/index', { teachers })
-            })
+        page = page || 1
+        limit = limit || 2
+        let offset = limit * (page - 1)
+
+        const params = {
+            filter,
+            page,
+            limit,
+            offset,
+            callback(teachers) {
+
+                for (teacher of teachers) {
+                    teacher.occupations = teacher.occupations.split(',')
+                }
+
+                const pagination = {
+                    total: Math.ceil(teachers.length > 0 ? (teachers[0].total / limit) : 0 ),
+                    page
+                }
+
+                return res.render('teachers/index', { teachers, pagination, filter })
+            }
         }
-        
+
+        Teacher.paginate(params)        
         
     },
     create(req, res) {

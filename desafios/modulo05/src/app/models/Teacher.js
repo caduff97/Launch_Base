@@ -56,19 +56,6 @@ module.exports = {
         })
 
     },
-    findBy(filter, callback) {
-
-        db.query(`
-        SELECT *
-        FROM teachers
-        WHERE name ILIKE '%${filter}%'
-        OR occupations ILIKE '%${filter}%'
-        ORDER BY name ASC`, (err, results) => {
-            if(err) throw `Database error! ${err}`
-            callback(results.rows)
-        })
-
-    },
     update(data, callback) {
         
         query = `
@@ -107,5 +94,46 @@ module.exports = {
             callback()
         })
 
+    },
+    paginate(params) {
+
+        const { filter, limit, offset, callback } = params
+
+        let query = '',
+            filterQuery = '',
+            totalQuery = `(
+                SELECT count(*)
+                FROM teachers
+                ) AS total
+            `
+        
+        if (filter) {
+            filterQuery = `
+                WHERE name ILIKE '%${filter}%'
+                OR occupations ILIKE '%${filter}%'
+            `
+
+            totalQuery = `(
+                SELECT count(*)
+                FROM teachers
+                ${filterQuery}
+                ) AS total
+            `
+        }
+
+        query = `
+            SELECT *,
+            ${totalQuery}
+            FROM teachers
+            ${filterQuery}
+            ORDER BY name ASC
+            LIMIT $1
+            OFFSET $2
+        `
+
+        db.query(query, [ limit, offset ], (err, results) => {
+            if (err) throw `Database error! ${err}`
+            callback(results.rows)
+        })
     }
 }

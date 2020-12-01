@@ -5,16 +5,31 @@ const db = require('../../config/db')
 
 module.exports = {
     index(req, res) {
-        
-        Student.all((students) => {
+       
+        let { filter, page, limit } = req.query
+    
+        page = page || 1
+        limit = limit || 2
+        let offset = limit * (page - 1)
 
-            for (student of students) {
-                student.schoolyear = grade(student.schoolyear)
+        const params = {
+            filter,
+            page,
+            limit,
+            offset,
+            callback(students) {
+
+                const pagination = {
+                    total: Math.ceil(students.length > 0 ? (students[0].total / limit) : 0 ),
+                    page
+                }
+
+                return res.render('students/index', { students, pagination, filter })
             }
+        }
 
-            return res.render('students/index', { students })
-        })
-        
+        Student.paginate(params)     
+
     },
     create(req, res) {
 
