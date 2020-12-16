@@ -43,9 +43,10 @@ body {
 	background: rgba(113, 89, 193, 0.1); 
 }
 
-/* === HEADER === */
+/* === HEADER AND FOOTER === */
 
-header {
+header, 
+footer {
     background: var(--purple-color);
     padding: 30px;
 }
@@ -65,12 +66,36 @@ header .links a, .bottom a {
     text-decoration: none;
 }
 
-header .links a:hover, .bottom a:hover {
+header .links a:hover,
+.bottom a:hover {
     opacity: 1;
     margin: 0 15px;
     padding-bottom: 2px;
     border-bottom: 2px solid;
+}
+
+header .links a:hover {
     transition: all 150ms linear 0s;
+}
+footer {
+    padding: 16px;
+}
+
+footer h1,
+footer h2 {
+    color: var(--default-title-color);
+    text-align: center;
+    letter-spacing: .5px;
+}
+
+footer h1 {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+footer h2 {
+    font-size: 12px;
+    font-weight: 300;
 }
 
 /* === SECTION === */
@@ -171,6 +196,10 @@ section {
 
 .bottom a {
     color: var(--purple-color);
+}
+
+.bottom a:hover {
+    transition: border 150ms linear 0s;
 }
 
 /* === CONTENTS PAGE === */

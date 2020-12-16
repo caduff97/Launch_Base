@@ -9,7 +9,7 @@ server.use(express.static("public"))
 
 server.set("view engine", "njk")
 
-nunjucks.configure("views", {
+nunjucks.configure("src/app/views", {
     express: server,
     autoescape: false,
     noCache: true
@@ -42,4 +42,4 @@ server.use((req,res) => {
     res.status(404).render("not-found")
 })
 
-server.listen(3333)
+server.listen(5000)
